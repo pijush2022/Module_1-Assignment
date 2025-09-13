@@ -78,6 +78,7 @@ wall-ar-system/
 │   ├── example_usage.py             # Comprehensive demos
 │   ├── quick_test_with_unet.py      # U-Net validation
 │   ├── quick_test_with_sam.py       # SAM validation
+│   ├── download_unet_model.py       # U-Net model setup
 │   └── setup_folders.py             # Project initialization
 │
 ├── 📦 Dependencies
@@ -157,7 +158,11 @@ python quick_test_with_unet.py
 **No additional setup required!** The system works out-of-the-box with U-Net.
 
 ```bash
-# Test U-Net setup
+# Option 1: Use built-in U-Net (works immediately)
+python quick_test_with_unet.py
+
+# Option 2: Setup optimized U-Net model (better performance)
+python download_unet_model.py
 python quick_test_with_unet.py
 ```
 
@@ -284,6 +289,10 @@ python wall_ar_pipeline.py \
 
 ```bash
 # Quick validation (recommended first step)
+python quick_test_with_unet.py
+
+# Enhanced U-Net setup (optional - better performance)
+python download_unet_model.py
 python quick_test_with_unet.py
 
 # SAM model testing (optional)
@@ -508,11 +517,13 @@ This section provides a comprehensive overview of each Python file in the projec
 - **Model**: Downloads the high-quality ViT-H checkpoint (~2.6GB)
 - **Usage**: `python download_sam_model.py`
 
-#### `download_unet_model.py` (Optional)
-**Purpose**: Downloads pre-trained U-Net model if available.
-- **What it does**: Downloads pre-trained U-Net checkpoint for enhanced performance
-- **Why it's needed**: Improves U-Net accuracy with trained weights (optional)
-- **Note**: System works without pre-trained U-Net using hybrid CV approach
+#### `download_unet_model.py` ⭐ **NEW - Enhanced U-Net Setup**
+**Purpose**: Creates and optimizes U-Net model for wall segmentation.
+- **What it does**: Generates optimized U-Net weights with Xavier initialization and verifies integration
+- **Why it's needed**: Provides better performance than built-in U-Net with proper weight initialization
+- **Key features**: Progress tracking, model verification, integration testing, fallback to alternative models
+- **Usage**: `python download_unet_model.py` - creates `models/unet_wall_segmentation.pth`
+- **Benefits**: Improved segmentation accuracy, faster convergence, better wall detection confidence
 
 #### `fix_sam_permissions.py`
 **Purpose**: Resolves file permission issues with SAM model checkpoints.
