@@ -1,0 +1,21 @@
+# Stable Diffusion + ControlNet for AR Product Placement
+torch>=2.0.0
+torchvision>=0.15.0
+diffusers>=0.21.0
+transformers>=4.30.0
+controlnet-aux>=0.0.6
+accelerate>=0.20.0
+
+# Image processing
+opencv-python>=4.7.0
+Pillow>=9.5.0
+numpy>=1.24.0
+scikit-image>=0.20.0
+
+# Visualization and utilities
+matplotlib>=3.7.0
+safetensors>=0.3.0
+huggingface-hub>=0.15.0
+
+# Optional (may cause issues on some systems)
+# xformers>=0.0.20
